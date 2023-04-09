@@ -1,0 +1,25 @@
+2023-04-08
+----------
+
+Tweak added:
+
+* absorption grace timer
+* player damage dealt multiplier
+* player damage taken multiplier
+* infinite use of mid-air dodge
+* infinite use of mid-air jump
+
+2023-04-09
+----------
+
+Tweak added:
+
+* absorption cooldown timer
+* chanting speed multiplier
+* lock HP/Mana/Stamina
+* no recovery amination after taking hit/hit stun
+* HP/Mana/Chanting/Currency gain when picking up Soul
+
+Release:
+
+* 1.0 release, for Steam version 1.0.5 (2023-12-21)
