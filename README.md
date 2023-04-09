@@ -11,7 +11,7 @@ Gameplay mod for game Little Witch Nobeta
 * infinite use of mid-air dodge
 * infinite use of mid-air jump
 * lock HP/Mana/Stamina
-* no recovery amination after taking hit/hit stun
+* no recovery animation after taking hit/hit stun
 * player damage dealt multiplier
 * player damage taken multiplier
 

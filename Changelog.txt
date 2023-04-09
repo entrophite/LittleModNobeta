@@ -17,7 +17,7 @@ Tweak added:
 * absorption cooldown timer
 * chanting speed multiplier
 * lock HP/Mana/Stamina
-* no recovery amination after taking hit/hit stun
+* no recovery animation after taking hit/hit stun
 * HP/Mana/Chanting/Currency gain when picking up Soul
 
 Release:
