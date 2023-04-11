@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace LittleModNobeta
 {
-	[BepInPlugin("little-mod-nobeta", "LittleModNobeta", "1.0")]
+	[BepInPlugin("little-mod-nobeta", "LittleModNobeta", "1.1")]
 	public class LittleModNobetaPlugin : BepInEx.Unity.IL2CPP.BasePlugin
 	{
 		internal static new BepInEx.Logging.ManualLogSource Log;
@@ -14,12 +14,14 @@ namespace LittleModNobeta
 		internal static ConfigEntry<bool> configLockStamina;
 		internal static ConfigEntry<float> configSoulPickupEffectMultiplier;
 		internal static ConfigEntry<float> configChantingSpeedMultiplier;
+		internal static ConfigEntry<bool> configNoShootingCooldown;
 		internal static ConfigEntry<float> configAbsorptionTimerSec;
 		internal static ConfigEntry<float> configAbsorptionCooldownSec;
 		internal static ConfigEntry<float> configDamageDealtMultiplier;
 		internal static ConfigEntry<float> configDamageTakenMultiplier;
 		internal static ConfigEntry<bool> configInfiniteMidAirJump;
 		internal static ConfigEntry<bool> configInfiniteMidAirDodge;
+		internal static ConfigEntry<bool> configNoSprintBraking;
 		internal static ConfigEntry<bool> configNoHitTakenRecovery;
 
 		public override void Load()
@@ -51,6 +53,10 @@ namespace LittleModNobeta
 				"soul_pickup_effect_multiplier",
 				1f,
 				"multiply HP/Mana/Chanting/Currency gain by this value, 1 means unchanged");
+			configNoShootingCooldown = Config.Bind("GENERAL",
+				"no_shooting_cooldown",
+				false,
+				"remove shooting/magic cooldown");
 			configChantingSpeedMultiplier = Config.Bind("GENERAL",
 				"chanting_speed_multiplier",
 				1f,
@@ -79,6 +85,10 @@ namespace LittleModNobeta
 				"infinite_mid_air_dodge",
 				false,
 				"allow infinite use of mid-air dodge");
+			configNoSprintBraking = Config.Bind("GENERAL",
+				"no_sprint_braking",
+				false,
+				"remove sprint braking animation");
 			configNoHitTakenRecovery = Config.Bind("GENERAL",
 				"no_hit_taken_recovery",
 				false,

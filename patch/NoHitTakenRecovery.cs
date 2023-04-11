@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using HarmonyLib;
 
@@ -36,6 +37,22 @@ public class NoHitTakenRecoveryDamagedFlyStart
 }
 
 [HarmonyPatch]
+public class NoHitTakenRecoverySkyDamagedFlyStart
+{
+	[HarmonyTargetMethod]
+	public static MethodBase TargetMethod()
+	{
+		return typeof(PlayerController).GetMethod(nameof(PlayerController.SkyDamagedFlyStart), BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+	}
+
+	[HarmonyPrefix]
+	public static bool Prefix()
+	{
+		return !LittleModNobetaPlugin.configNoHitTakenRecovery.Value;
+	}
+}
+
+[HarmonyPatch]
 public class NoHitTakenRecoveryDamagedLandStart
 {
 	[HarmonyTargetMethod]
@@ -48,5 +65,25 @@ public class NoHitTakenRecoveryDamagedLandStart
 	public static bool Prefix()
 	{
 		return !LittleModNobetaPlugin.configNoHitTakenRecovery.Value;
+	}
+}
+
+[HarmonyPatch]
+public class NoHitTakenRecoveryHighlyLand
+{
+	[HarmonyTargetMethod]
+	public static MethodBase TargetMethod()
+	{
+		return typeof(MoveController).GetMethod(nameof(MoveController.Update), BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+	}
+
+	[HarmonyPostfix]
+	public static void Postfix(ref MoveController __instance)
+	{
+		if (LittleModNobetaPlugin.configNoHitTakenRecovery.Value)
+			// patching GetHeightLand() should be the direct way to do, but that causes crashing during patching
+			// instead, try exploit the GetHeightLand() logic, to lock the verticalForce being always greater than fallSpeedMax (since both are negative values)
+			__instance.verticalForce = Math.Max(__instance.verticalForce, __instance.fallSpeedMax * 0.99f);
+		return;
 	}
 }
