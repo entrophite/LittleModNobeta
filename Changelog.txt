@@ -32,6 +32,10 @@ Tweak added:
 * no shooting cooldown
 * no sprint braking
 
-Tweak added:
+Tweak updated:
 
 * no hit recovery now works on receiving mid-air damage and falling from great height
+
+Release:
+
+* 1.1 release, for Steam version 1.0.5 (2023-12-21)
